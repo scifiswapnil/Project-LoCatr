@@ -1,0 +1,42 @@
+{% extends 'LoCatr/base.html' %}
+{% block content %}
+
+<form  method="post"  action="{% url 'login' %}">
+    {% csrf_token %}
+
+         <div style = "max-width:470px;">
+            <center>
+                <b>Username :</b>
+               <input type = "text" style = "margin-left:20%;" placeholder = "username" name = "username" />
+            </center>
+         </div>
+
+         <br>
+
+         <div style = "max-width:470px;">
+            <center>
+                <b>Password :</b>
+               <input type = "password" style = "margin-left:20%;"
+                  placeholder = "password" name = "password" />
+            </center>
+         </div>
+
+         <br>
+
+         <div style = "max-width:470px;">
+            <center>
+
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
+                  height:35px; width:80%;margin-left:19%;" type = "submit"
+                  value = "Login" >
+                  <strong>Login</strong>
+               </button>
+
+            </center>
+         </div>
+
+      </form>
+
+{{error}}
+
+{% endblock %}

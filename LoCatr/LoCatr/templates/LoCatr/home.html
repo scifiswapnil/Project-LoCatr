@@ -1,0 +1,11 @@
+{% extends 'LoCatr/base.html' %}
+{% block content %}
+<html>
+
+   <body>
+      You are : <strong>{{username}}</strong>
+      <a href="{% url 'logout' %}">logout</a>
+   </body>
+
+</html>
+{% endblock %}

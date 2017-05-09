@@ -1,51 +1,92 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django import forms
-from models import pumps_stations,Rusers
+from models import Rusers
+from django.shortcuts import get_object_or_404, render
+from django.views import generic
+from django.views.generic.edit import UpdateView,DeleteView,CreateView
+from django.core.urlresolvers import reverse_lazy
+
+
+class indexview(generic.ListView):
+    template_name = 'LoCatr/render.html'
+    context_object_name = 'form'
+    def get_queryset(self):
+        return Rusers.objects.all()
+
+class updateview(generic.UpdateView):
+    model = Rusers
+    context_object_name = 'form'
+    fields = ('name', 'email', 'password', 'pump_name', 'address_line1', 'address_line2', 'telephone', 'zip_code', 'state',
+    'pump_status')
+
 
 class registerer(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = Rusers
-        fields = ('name', 'email', 'password', 'address_line1', 'address_line2', 'telephone', 'zip_code', 'state')
+        fields = ('name', 'email', 'password','pump_name' , 'address_line1', 'address_line2', 'telephone', 'zip_code', 'state', 'pump_status')
+    def check(self):
+        name = self.cleaned_data.get('name')
+        if Rusers.objects.filter(name=name).exists():
+            return False
+        else:
+            return True
 
 def register(request):
     if request.method == "POST":
         form = registerer(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.save()
-            error = "registration successful";
-            return render(request, 'LoCatr/index.html', {'error': error})
+            if form.check():
+                post = form.save(commit=False)
+                post.save()
+                error = "registration successful"
+                return render(request, 'LoCatr/login.html',{'success':error})
+            else:
+                error = "User name already exists"
+                return render(request, 'LoCatr/register.html', {'error': error})
     else:
         form = registerer()
         return render(request, 'LoCatr/register.html', {'form': form})
 
+
 class LoginForm(forms.Form):
    username = forms.CharField(max_length = 100)
    password = forms.CharField(widget = forms.PasswordInput())
-
+   def check(self):
+       username = self.cleaned_data.get('username',False)
+       password = self.cleaned_data.get('password',False)
+       results = Rusers.objects.filter(name=username).first()
+       if results!= None and results.password == password:
+           return True
+       return False
 def login(request):
-    if request.method == "POST":
-        MyLoginForm = LoginForm(request.POST)
-        if MyLoginForm.is_valid():
-            username = MyLoginForm.cleaned_data['username']
-            password = MyLoginForm.cleaned_data['password']
-            results = Rusers.objects.filter(name=username)
-            if len(results) != 0:
-                if results[0].password == password:
-                    request.session['username'] = username
-                    return render(request, 'LoCatr/home.html', {"username": username})
-            else:
-                error = "registration successful";
-                return render(request, 'LoCatr/index.html', {'error': error})
-        else:
-            error = "registration successful";
-            return render(request, 'LoCatr/index.html',{'error':error})
     if request.session.has_key('username'):
         username = request.session['username']
-        return render(request, 'LoCatr/home.html', {'username': username})
+        result = Rusers.objects.filter(name=username).first()
+        request.session['username'] = username
+        return render(request, 'LoCatr/home.html', {"username": result})
+    elif request.method == "POST":
+        MyLoginForm = LoginForm(request.POST)
+        if MyLoginForm.is_valid() and MyLoginForm.check():
+            username = MyLoginForm.cleaned_data['username']
+            result = Rusers.objects.filter(name=username).first()
+            request.session['username'] = username
+            return render(request, 'LoCatr/home.html', {"username": result})
+        else:
+            error = "wrong username or password";
+            return render(request, 'LoCatr/login.html',{'error':error})
     else:
-        return render(request, 'LoCatr/index.html')
+        return render(request, 'LoCatr/login.html')
+
+
+def home(request):
+    if request.session.has_key('username'):
+        username = request.session['username']
+        result = Rusers.objects.filter(name=username).first()
+        request.session['username'] = username
+        return render(request, 'LoCatr/home.html', {"username": result})
+    else:
+        return redirect('index')
 
 
 def logout(request):
@@ -53,29 +94,18 @@ def logout(request):
         del request.session['username']
     except:
         pass
-    return render(request,'LoCatr/index.html')
+    return redirect('index')
 
 
-
-# def post_new(request):
-#     if request.method == "POST":
-#         form = register(request.POST)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             post.save()
-#             return render(request, 'music/index.html', {'form': form})
-#     else:
-#         form = register()
-#     return render(request, 'music/post_edit.html', {'form': form})
-
-# if request.method == "POST":
-#     try:
-#         tname = request.POST['username']
-#         passwd = request.POST['password']
-#         results = Rusers.objects.filter(name=tname)
-#         if results[0].password == passwd:
-#             return render(request, 'LoCatr/home.html')
-#         else:
-#             return render(request, 'LoCatr/index.html',{'error' : 'login fail'})
-#     except:
-#         return render(request, 'LoCatr/index.html', {'error': 'login fail'})
+def update(request,id):
+    username = request.session['username']
+    results = Rusers.objects.filter(id=id).first()
+    cmpr = Rusers.objects.filter(name=username).first()
+    if results.name == cmpr.name:
+        if cmpr.pump_status == True:
+            cmpr.pump_status = False
+            cmpr.save()
+        else:
+            cmpr.pump_status = True
+            cmpr.save()
+    return redirect('home')

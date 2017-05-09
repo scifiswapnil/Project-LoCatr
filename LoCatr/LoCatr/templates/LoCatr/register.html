@@ -6,4 +6,12 @@
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
+
+{% if error %}
+<h5 style="color:red;"><b> {{error}} </b></h5>
+{% endif %}
+
+{% if success %}
+<h5 style="color:green;"><b> {{success}} </b></h5>
+{% endif %}
 {% endblock %}

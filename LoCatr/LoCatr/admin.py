@@ -1,4 +1,3 @@
 from django.contrib import admin
-from models import Rusers,pumps_stations
+from models import Rusers
 admin.site.register(Rusers)
-admin.site.register(pumps_stations)

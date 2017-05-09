@@ -1,0 +1,18 @@
+{% extends 'LoCatr/base.html' %}
+{% block content %}
+<ul>
+
+    {% for users in form%}
+    <h5><b> Pump Name : </b> {{ users.pump_name }}</h5>
+    {% if users.pump_status == True %}
+    <h5 style="color:green;"><b> Pump Status : </b> Open </h5>
+    {% else %}
+    <h5 style="color:red;"><b> Pump Status : </b> Closed </h5>
+    {% endif %}
+    <span><h5><b> Address Line 1 : </b> {{ users.address_line1 }}</h5></span><span><h5><b> Address Line 2 : </b> {{ users.address_line2 }}</h5></span>
+    <hr>
+    {% endfor%}
+</ul>
+
+
+{% endblock %}

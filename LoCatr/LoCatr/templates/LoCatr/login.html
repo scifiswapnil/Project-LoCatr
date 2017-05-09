@@ -36,7 +36,12 @@
          </div>
 
       </form>
+{% if error %}
+<h5 style="color:red;"><b> {{error}} </b></h5>
+{% endif %}
 
-{{error}}
+{% if success %}
+<h5 style="color:green;"><b> {{success}} </b></h5>
+{% endif %}
 
 {% endblock %}

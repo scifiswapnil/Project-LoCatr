@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14fb7952-8372-4a29-9a25-bb9d8e099c58" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/LoCatr/LoCatr/templates/LoCatr/index.html" afterPath="$PROJECT_DIR$/LoCatr/LoCatr/templates/LoCatr/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoCatr/db.sqlite3" afterPath="$PROJECT_DIR$/LoCatr/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoCatr/LoCatr/admin.py" afterPath="$PROJECT_DIR$/LoCatr/LoCatr/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoCatr/LoCatr/models.py" afterPath="$PROJECT_DIR$/LoCatr/LoCatr/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoCatr/LoCatr/templates/LoCatr/base.html" afterPath="$PROJECT_DIR$/LoCatr/LoCatr/templates/LoCatr/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoCatr/LoCatr/templates/LoCatr/home.html" afterPath="$PROJECT_DIR$/LoCatr/LoCatr/templates/LoCatr/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoCatr/LoCatr/templates/LoCatr/register.html" afterPath="$PROJECT_DIR$/LoCatr/LoCatr/templates/LoCatr/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoCatr/LoCatr/urls.py" afterPath="$PROJECT_DIR$/LoCatr/LoCatr/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LoCatr/LoCatr/views.py" afterPath="$PROJECT_DIR$/LoCatr/LoCatr/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/python2.7/site-packages/django/contrib/admin/sites.py" afterPath="$PROJECT_DIR$/lib/python2.7/site-packages/django/contrib/admin/sites.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/python2.7/site-packages/django/contrib/admindocs/urls.py" afterPath="$PROJECT_DIR$/lib/python2.7/site-packages/django/contrib/admindocs/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/python2.7/site-packages/pip/_vendor/distlib/index.py" afterPath="$PROJECT_DIR$/lib/python2.7/site-packages/pip/_vendor/distlib/index.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/python2.7/site-packages/pip/_vendor/distlib/locators.py" afterPath="$PROJECT_DIR$/lib/python2.7/site-packages/pip/_vendor/distlib/locators.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/python2.7/site-packages/pip/index.py" afterPath="$PROJECT_DIR$/lib/python2.7/site-packages/pip/index.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/python2.7/site-packages/setuptools/package_index.py" afterPath="$PROJECT_DIR$/lib/python2.7/site-packages/setuptools/package_index.py" />
-    </list>
+    <list default="true" id="14fb7952-8372-4a29-9a25-bb9d8e099c58" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -197,7 +180,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="55" />
-    <option name="y" value="-772" />
+    <option name="y" value="-4" />
     <option name="width" value="1311" />
     <option name="height" value="772" />
   </component>
@@ -432,8 +415,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="-772" width="1311" height="772" extended-state="6" />
-    <editor active="true" />
+    <frame x="55" y="-4" width="1311" height="772" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1749409" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
